@@ -61,12 +61,14 @@ test('CAN Login Functionality', async({page})=>{
   await expect(edit).toBeVisible();
   await edit.click();
   const upload=page.locator('input.js-form-file.form-file');
-  await upload.click();
+  //await upload.click();
   const img=upload
   await img.setInputFiles('tests/UploadFiles/LoveWork.jpg');
   await page.waitForTimeout(2000);
   await expect(page.getByText('LoveWork.jpg')).toBeVisible({ timeout: 5000 });
-  /*const save=page.getByLabel('Change Your Profile Picture').getByRole('button', { name: 'Save' });
-  await save.click();*/
+  const save=page.getByLabel('Change Your Profile Picture').getByRole('button', { name: 'Save' });
+  await save.click();
   await page.screenshot({ path: 'Screenshots/05-after-upload.png' });
+  await page.waitForTimeout(5000);
+  
 });
