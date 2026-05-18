@@ -64,6 +64,7 @@ test('CAN After Login', async({page})=>{
   const edit = page.locator('img.edit-profile').first();
   await expect(edit).toBeVisible();
   await edit.click();
+<<<<<<< HEAD
   const upload=page.locator('input[name="files[field_profile_image]"]');
   const img=upload;
   await img.setInputFiles('tests/UploadFiles/LoveWork.jpg');
@@ -143,6 +144,19 @@ test('CAN After Login', async({page})=>{
 
 
    
+=======
+  const upload=page.locator('input.js-form-file.form-file');
+  //await upload.click();
+  const img=upload
+  await img.setInputFiles('tests/UploadFiles/LoveWork.jpg');
+  await page.waitForTimeout(2000);
+  await expect(page.getByText('LoveWork.jpg')).toBeVisible({ timeout: 5000 });
+  const save=page.getByLabel('Change Your Profile Picture').getByRole('button', { name: 'Save' });
+  await save.click();
+  await page.screenshot({ path: 'Screenshots/05-after-upload.png' });
+  await page.waitForTimeout(5000);
+  
+>>>>>>> 9b702e43fe1045b0bb179d80627d8642465f6313
 });
 //function to enter password
 async function Typepassword(page:any ,passwordfill:string)
